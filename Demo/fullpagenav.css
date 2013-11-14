@@ -1,0 +1,36 @@
+.fpn_body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.fullpagenav {
+  list-style:none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+}
+
+.fullpagenav > .fpn_li {
+  list-style:none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.fullpagenav > .fpn_li > .fpn_wrap {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+
+
+.fullpagenav > .fpn_li:active {
+  z-index: 10;
+}
