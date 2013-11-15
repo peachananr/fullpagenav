@@ -110,7 +110,7 @@
           }).animate({
             width: "100%"
             })
-          li.find(".fpn_wrap").css({position: "fixed", "z-index": 99}).finish().animate({
+          li.find(".fpn_wrap").addClass("fpn_clicked").css({position: "fixed", "z-index": 99}).finish().animate({
             width: "100%", top: 0, left: 0
           }, settings.animationDuration, function() {
             e.preventDefault()
