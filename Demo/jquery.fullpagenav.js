@@ -102,46 +102,56 @@
       
       if (settings.clickable == true && li.data("link")) {
         li.css({cursor: "pointer"}).click(function(e) {
-          li.find(".fpn_wrap > img").css({
-            margin: 0,
-            padding: 0,
-            left: 0,
-            maxHeight: "inherit"
-          }).animate({
-            width: "100%"
+          if (!li.find(".fpn_wrap").hasClass("fpn_clicked")) {
+            li.find(".fpn_wrap > img").css({
+              margin: 0,
+              padding: 0,
+              left: 0,
+              maxHeight: "inherit"
+            }).animate({
+              width: "100%"
+              })
+              
+            
+            li.find(".fpn_wrap").addClass("fpn_clicked").css({position: "fixed", "z-index": 99}).finish().animate({
+              width: "100%", top: 0, left: 0
+            }, settings.animationDuration, function() {
+              e.preventDefault()
+              if (typeof settings.afterClicked == 'function') return settings.afterClicked(li.data("link"));
+              window.location.href = li.data("link");
+            });
+          } else {
+            li.find(".fpn_wrap").removeClass("fpn_clicked").finish().animate({
+              width: "0%", top: 0, left: 0, height: "0%"
+            }, settings.animationDuration, function() {
+              $(this).attr("style","").find("> img").attr("style","")
             })
-          li.find(".fpn_wrap").addClass("fpn_clicked").css({position: "fixed", "z-index": 99}).finish().animate({
-            width: "100%", top: 0, left: 0
-          }, settings.animationDuration, function() {
-            e.preventDefault()
-            if (typeof settings.afterClicked == 'function') settings.afterClicked(li.data("link"));
-            window.location.href = li.data("link");
-          });
-          
+          }
         });
       }
       
       li.mouseenter(function(e) {
-        $(this).finish().addClass("active")
-        el.recalculate(settings, width);
-        if (settings.animateFrom == "auto") {
-          
-          if(determineDirection(li, e) == 1) {
-            $(this).find(".fpn_wrap").finish().css({ float: "left"}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
+        if (!li.find(".fpn_wrap").hasClass("fpn_clicked")) {
+          $(this).finish().addClass("active")
+          el.recalculate(settings, width);
+          if (settings.animateFrom == "auto") {
+
+            if(determineDirection(li, e) == 1) {
+              $(this).find(".fpn_wrap").finish().css({ float: "left"}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
+            } else {
+              $(this).find(".fpn_wrap").finish().css({ float: "right"}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
+            }
           } else {
-            $(this).find(".fpn_wrap").finish().css({ float: "right"}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
+            $(this).find(".fpn_wrap").finish().css({ float: settings.animateFrom}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
           }
-          
-          
-        } else {
-          $(this).find(".fpn_wrap").finish().css({ float: settings.animateFrom}).animate({width: el.find(".fpn_li.active").width()}, settings.animateDuration)
         }
         
       }).mouseleave(function() {
-        
-        $(this).removeClass("active")
-        el.recalculate(settings, width);
-        el.find(".fpn_wrap").finish().css({width: "100%"})
+        if (!li.find(".fpn_wrap").hasClass("fpn_clicked")) { 
+          $(this).removeClass("active")
+          el.recalculate(settings, width);
+          el.find(".fpn_wrap").finish().css({width: "100%"})
+        }
       });
     });
     
