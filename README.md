@@ -85,4 +85,4 @@ This callback gets called after the user clicked the navigation.
 And that's a wrap for all the features available for this plugin. If you want to see more of my plugins, visit [The Pete Design](http://www.thepetedesign.com/#design), or follow me on [Twitter](http://www.twitter.com/peachananr) and [Github](http://www.github.com/peachananr).
 
 ## Other Resources
-- Tutorial (Coming Soon)
+- [Tutorial](http://www.onextrapixel.com/2013/12/04/turn-your-website-into-a-fully-dynamic-full-page-column-based-navigation/)
