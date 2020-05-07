@@ -2,10 +2,8 @@
 Create a fully responsive and dynamic full page navigation with one JS call
 Created by [Pete R.](http://www.thepetedesign.com), Founder of [BucketListly](http://www.bucketlistly.com)
 
-[![Full Page Navigation](http://www.thepetedesign.com/images/fullpagenav_image.png "Full Page Navigation")](http://www.thepetedesign.com/demos/fullpagenav_demo.html)
-
 ## Demo
-[View demo](http://www.thepetedesign.com/demos/fullpagenav_demo.html)
+[View demo](http://peachananr.github.io/fullpagenav/Demo/fullpagenav_demo.html)
 
 ## Compatibility
 Modern browsers such as Chrome, Firefox, and Safari on both desktop and smartphones have been tested. I have not test this on IE.
